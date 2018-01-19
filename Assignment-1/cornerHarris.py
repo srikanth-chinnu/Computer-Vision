@@ -12,8 +12,8 @@ filename = argv[1]
 results = open('HCD_Results.txt','w')
 
 # Threshold for an optimal value, it may vary depending on the image.
-threshold = 0.02
-while(threshold<=0.2):
+threshold = 0.01
+while(threshold<=0.03):
     img = cv2.imread(filename)
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     gray = np.float32(gray)
@@ -26,7 +26,7 @@ while(threshold<=0.2):
     cv2.imwrite("cornerHarris/"+Filename,img)
     output = Filename+" is a Harris Corner Detector output image of "+filename+" with threshold "+str(threshold)+"\n"
     results.write(output)
-    threshold += 0.01
+    threshold += 0.001
 
 results.close()
 #cv2.imshow('dst',img)
